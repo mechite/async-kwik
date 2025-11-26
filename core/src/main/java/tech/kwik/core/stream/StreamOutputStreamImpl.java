@@ -19,11 +19,7 @@
 package tech.kwik.core.stream;
 
 import tech.kwik.core.common.EncryptionLevel;
-import tech.kwik.core.frame.DataBlockedFrame;
-import tech.kwik.core.frame.QuicFrame;
-import tech.kwik.core.frame.ResetStreamFrame;
-import tech.kwik.core.frame.StreamDataBlockedFrame;
-import tech.kwik.core.frame.StreamFrame;
+import tech.kwik.core.frame.*;
 import tech.kwik.core.log.Logger;
 
 import java.io.IOException;
@@ -41,7 +37,7 @@ class StreamOutputStreamImpl extends StreamOutputStream implements FlowControlUp
     private final QuicStreamImpl quicStream;
     private final Object lock = new Object();
 
-    private final SendBuffer sendBuffer;
+    public final SendBuffer sendBuffer;
     private final Logger log;
     private final int maxBufferSize;
     private final RetransmitBuffer retransmitBuffer;
@@ -64,7 +60,7 @@ class StreamOutputStreamImpl extends StreamOutputStream implements FlowControlUp
     StreamOutputStreamImpl(QuicStreamImpl quicStream, Integer sendBufferSize, FlowControl flowControl, Logger log) {
         this.quicStream = quicStream;
         flowController = flowControl;
-        sendBuffer = new SendBuffer(sendBufferSize);
+        sendBuffer = new SendBuffer(quicStream, sendBufferSize);
         this.log = log;
         maxBufferSize = sendBuffer.getMaxSize();
         retransmitBuffer = new RetransmitBuffer();
@@ -170,7 +166,7 @@ class StreamOutputStreamImpl extends StreamOutputStream implements FlowControlUp
             long flowControlLimit = flowController.getFlowControlLimit(quicStream);
             assert (flowControlLimit >= currentOffset);
 
-            int maxBytesToSend = sendBuffer.getAvailableBytes();
+            int maxBytesToSend = sendBuffer.getBufferedBytes();
             if (flowControlLimit > currentOffset || maxBytesToSend == 0) {
                 StreamFrame dummy = new StreamFrame(quicStream.quicVersion, quicStream.streamId, currentOffset, new byte[0], false);
                 maxBytesToSend = Integer.min(maxBytesToSend, maxFrameSize - dummy.getFrameLength() - 1);  // Take one byte extra for length field var int

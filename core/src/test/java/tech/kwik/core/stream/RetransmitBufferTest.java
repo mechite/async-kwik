@@ -19,9 +19,9 @@
 package tech.kwik.core.stream;
 
 
-import tech.kwik.core.frame.StreamFrame;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tech.kwik.core.frame.StreamFrame;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

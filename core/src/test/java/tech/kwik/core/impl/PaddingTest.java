@@ -18,10 +18,10 @@
  */
 package tech.kwik.core.impl;
 
-import tech.kwik.core.frame.Padding;
-import tech.kwik.core.log.Logger;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import tech.kwik.core.frame.Padding;
+import tech.kwik.core.log.Logger;
 
 import java.nio.ByteBuffer;
 

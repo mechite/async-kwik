@@ -18,11 +18,9 @@
  */
 package tech.kwik.core.impl;
 
-import tech.kwik.core.common.PnSpace;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import tech.kwik.core.common.PnSpace;
 
 class PnSpaceTest {
 

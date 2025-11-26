@@ -42,8 +42,7 @@ public class LimitedInputStream extends FilterInputStream {
             int read = super.read();
             bytesRead++;
             return read;
-        }
-        else {
+        } else {
             throw new LimitExceededException(limit);
         }
 

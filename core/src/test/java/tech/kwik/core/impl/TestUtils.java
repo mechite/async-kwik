@@ -27,11 +27,11 @@ import tech.kwik.core.test.FieldSetter;
 
 import javax.crypto.Cipher;
 
-import static tech.kwik.core.impl.Version.IETF_draft_29;
-import static tech.kwik.core.impl.Version.QUIC_version_1;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static tech.kwik.core.impl.Version.IETF_draft_29;
+import static tech.kwik.core.impl.Version.QUIC_version_1;
 
 public class TestUtils {
 

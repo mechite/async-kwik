@@ -18,9 +18,9 @@
  */
 package tech.kwik.core.impl;
 
+import org.mockito.ArgumentMatcher;
 import tech.kwik.core.packet.QuicPacket;
 import tech.kwik.core.packet.ShortHeaderPacket;
-import org.mockito.ArgumentMatcher;
 
 import java.util.Arrays;
 

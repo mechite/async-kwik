@@ -55,9 +55,7 @@ import java.util.function.Function;
 import static tech.kwik.core.ConnectionTerminatedEvent.CloseReason;
 import static tech.kwik.core.ConnectionTerminatedEvent.CloseReason.ConnectionLost;
 import static tech.kwik.core.QuicConstants.TransportErrorCode.*;
-import static tech.kwik.core.common.EncryptionLevel.App;
-import static tech.kwik.core.common.EncryptionLevel.Handshake;
-import static tech.kwik.core.common.EncryptionLevel.Initial;
+import static tech.kwik.core.common.EncryptionLevel.*;
 import static tech.kwik.core.impl.QuicConnectionImpl.ErrorType.APPLICATION_ERROR;
 import static tech.kwik.core.impl.QuicConnectionImpl.ErrorType.QUIC_LAYER_ERROR;
 import static tech.kwik.core.send.Sender.NO_RETRANSMIT;
@@ -142,6 +140,8 @@ public abstract class QuicConnectionImpl implements QuicConnection, PacketProces
     private volatile ConnectionCloseFrame lastConnectionCloseFrameSent;
     private final ScheduledExecutorService scheduler;
     private ConnectionListener connectionListener;
+    public StreamReadListener readListener;
+    public StreamWriteListener writeListener;
     protected final ExecutorService callbackThread;
 
     // https://datatracker.ietf.org/doc/html/rfc9221  Datagram Extension
@@ -149,7 +149,6 @@ public abstract class QuicConnectionImpl implements QuicConnection, PacketProces
     private volatile int maxDatagramFrameSize;
     private volatile Consumer<byte[]> datagramHandler;
     private volatile ExecutorService datagramHandlerExecutor;
-
 
     protected QuicConnectionImpl(Version originalVersion, Role role, Path secretsFile, ConnectionConfig settings, String id, Logger log) {
         this.quicVersion = new VersionHolder(originalVersion);
@@ -962,8 +961,30 @@ public abstract class QuicConnectionImpl implements QuicConnection, PacketProces
     }
 
     @Override
+    public ConnectionListener getConnectionListener() {
+        return connectionListener;
+    }
+    @Override
     public void setConnectionListener(ConnectionListener connectionListener) {
         this.connectionListener = connectionListener;
+    }
+
+    @Override
+    public StreamReadListener getStreamReadListener() {
+        return readListener;
+    }
+    @Override
+    public void setStreamReadListener(StreamReadListener listener) {
+        this.readListener = listener;
+    }
+
+    @Override
+    public StreamWriteListener getStreamWriteListener() {
+        return writeListener;
+    }
+    @Override
+    public void setStreamWriteListener(StreamWriteListener listener) {
+        this.writeListener = listener;
     }
 
     protected abstract boolean usingIPv4();

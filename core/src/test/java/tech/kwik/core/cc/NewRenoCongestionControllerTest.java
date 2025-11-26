@@ -18,14 +18,14 @@
  */
 package tech.kwik.core.cc;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import tech.kwik.core.common.EncryptionLevel;
-import tech.kwik.core.impl.MockPacket;
 import tech.kwik.core.frame.Padding;
+import tech.kwik.core.impl.MockPacket;
 import tech.kwik.core.log.NullLogger;
 import tech.kwik.core.packet.PacketInfo;
 import tech.kwik.core.packet.QuicPacket;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import java.time.Instant;
 import java.util.List;

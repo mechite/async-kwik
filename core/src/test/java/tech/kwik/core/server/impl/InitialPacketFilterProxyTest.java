@@ -18,10 +18,10 @@
  */
 package tech.kwik.core.server.impl;
 
-import tech.kwik.core.impl.Version;
-import tech.kwik.core.log.LogProxy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tech.kwik.core.impl.Version;
+import tech.kwik.core.log.LogProxy;
 
 import java.nio.ByteBuffer;
 import java.time.Instant;

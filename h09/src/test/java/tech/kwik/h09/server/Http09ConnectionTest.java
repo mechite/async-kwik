@@ -18,16 +18,12 @@
  */
 package tech.kwik.h09.server;
 
-import tech.kwik.core.QuicConnection;
-import tech.kwik.core.QuicStream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tech.kwik.core.QuicConnection;
+import tech.kwik.core.QuicStream;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;

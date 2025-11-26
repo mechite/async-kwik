@@ -18,14 +18,14 @@
  */
 package tech.kwik.core.packet;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import tech.kwik.core.crypto.ConnectionSecrets;
+import tech.kwik.core.crypto.MissingKeysException;
 import tech.kwik.core.impl.Role;
 import tech.kwik.core.impl.Version;
 import tech.kwik.core.impl.VersionHolder;
-import tech.kwik.core.crypto.ConnectionSecrets;
-import tech.kwik.core.crypto.MissingKeysException;
 import tech.kwik.core.log.Logger;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import java.nio.ByteBuffer;
 

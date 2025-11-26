@@ -28,15 +28,9 @@ import tech.kwik.core.frame.PathResponseFrame;
 import tech.kwik.core.impl.VersionHolder;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
-import static tech.kwik.core.common.EncryptionLevel.Handshake;
-import static tech.kwik.core.common.EncryptionLevel.Initial;
-import static tech.kwik.core.common.EncryptionLevel.ZeroRTT;
+import static tech.kwik.core.common.EncryptionLevel.*;
 
 /**
  * Assembles QUIC packets for sending.

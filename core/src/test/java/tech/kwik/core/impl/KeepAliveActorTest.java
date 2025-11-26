@@ -18,14 +18,14 @@
  */
 package tech.kwik.core.impl;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import tech.kwik.core.common.EncryptionLevel;
 import tech.kwik.core.frame.PingFrame;
 import tech.kwik.core.send.Sender;
 import tech.kwik.core.test.TestClock;
 import tech.kwik.core.test.TestScheduledExecutor;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.ScheduledExecutorService;
 

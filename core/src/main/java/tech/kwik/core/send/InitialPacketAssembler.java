@@ -20,8 +20,8 @@ package tech.kwik.core.send;
 
 import tech.kwik.core.ack.AckGenerator;
 import tech.kwik.core.common.EncryptionLevel;
-import tech.kwik.core.impl.VersionHolder;
 import tech.kwik.core.frame.QuicFrame;
+import tech.kwik.core.impl.VersionHolder;
 import tech.kwik.core.packet.InitialPacket;
 import tech.kwik.core.packet.QuicPacket;
 

@@ -24,11 +24,7 @@ import tech.kwik.qlog.event.*;
 
 import java.io.File;
 import java.time.Instant;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Queue;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Entrypoint of the QLog module. Collects qlog events and processes them asynchronously.

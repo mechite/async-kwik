@@ -18,9 +18,9 @@
  */
 package tech.kwik.core.impl;
 
-import tech.kwik.core.QuicSessionTicket;
 import tech.kwik.agent15.NewSessionTicket;
 import tech.kwik.agent15.TlsConstants;
+import tech.kwik.core.QuicSessionTicket;
 
 import java.nio.ByteBuffer;
 

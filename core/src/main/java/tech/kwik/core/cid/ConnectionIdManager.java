@@ -34,9 +34,7 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
-import static tech.kwik.core.QuicConstants.TransportErrorCode.CONNECTION_ID_LIMIT_ERROR;
-import static tech.kwik.core.QuicConstants.TransportErrorCode.FRAME_ENCODING_ERROR;
-import static tech.kwik.core.QuicConstants.TransportErrorCode.PROTOCOL_VIOLATION;
+import static tech.kwik.core.QuicConstants.TransportErrorCode.*;
 import static tech.kwik.core.common.EncryptionLevel.App;
 
 /**

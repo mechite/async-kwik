@@ -18,21 +18,19 @@
  */
 package tech.kwik.core.packet;
 
-import tech.kwik.core.impl.InvalidPacketException;
-import tech.kwik.core.impl.Role;
-import tech.kwik.core.impl.VersionHolder;
 import tech.kwik.core.crypto.Aead;
 import tech.kwik.core.crypto.ConnectionSecrets;
 import tech.kwik.core.crypto.MissingKeysException;
+import tech.kwik.core.impl.InvalidPacketException;
+import tech.kwik.core.impl.Role;
+import tech.kwik.core.impl.VersionHolder;
 import tech.kwik.core.log.Logger;
 import tech.kwik.core.log.NullLogger;
 
 import java.nio.ByteBuffer;
 import java.util.function.BiFunction;
 
-import static tech.kwik.core.common.EncryptionLevel.App;
-import static tech.kwik.core.common.EncryptionLevel.Handshake;
-import static tech.kwik.core.common.EncryptionLevel.Initial;
+import static tech.kwik.core.common.EncryptionLevel.*;
 
 /**
  * Packet parser for endpoint that has client role.

@@ -18,9 +18,9 @@
  */
 package tech.kwik.core.cid;
 
-import tech.kwik.core.log.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tech.kwik.core.log.Logger;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;

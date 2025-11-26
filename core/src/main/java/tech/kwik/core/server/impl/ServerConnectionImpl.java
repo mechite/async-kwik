@@ -23,11 +23,7 @@ import tech.kwik.agent15.TlsConstants;
 import tech.kwik.agent15.TlsProtocolException;
 import tech.kwik.agent15.alert.MissingExtensionAlert;
 import tech.kwik.agent15.alert.NoApplicationProtocolAlert;
-import tech.kwik.agent15.engine.ServerMessageSender;
-import tech.kwik.agent15.engine.TlsEngine;
-import tech.kwik.agent15.engine.TlsServerEngine;
-import tech.kwik.agent15.engine.TlsServerEngineFactory;
-import tech.kwik.agent15.engine.TlsStatusEventHandler;
+import tech.kwik.agent15.engine.*;
 import tech.kwik.agent15.extension.ApplicationLayerProtocolNegotiationExtension;
 import tech.kwik.agent15.extension.Extension;
 import tech.kwik.agent15.handshake.*;
@@ -38,21 +34,13 @@ import tech.kwik.core.cid.ConnectionIdManager;
 import tech.kwik.core.common.EncryptionLevel;
 import tech.kwik.core.common.PnSpace;
 import tech.kwik.core.crypto.CryptoStream;
-import tech.kwik.core.frame.CryptoFrame;
-import tech.kwik.core.frame.HandshakeDoneFrame;
-import tech.kwik.core.frame.NewTokenFrame;
-import tech.kwik.core.frame.QuicFrame;
-import tech.kwik.core.frame.RetireConnectionIdFrame;
+import tech.kwik.core.frame.*;
 import tech.kwik.core.impl.*;
 import tech.kwik.core.log.LogProxy;
 import tech.kwik.core.log.Logger;
 import tech.kwik.core.packet.*;
 import tech.kwik.core.send.SenderImpl;
-import tech.kwik.core.server.ApplicationProtocolConnectionFactory;
-import tech.kwik.core.server.ApplicationProtocolSettings;
-import tech.kwik.core.server.ServerConnection;
-import tech.kwik.core.server.ServerConnectionConfig;
-import tech.kwik.core.server.ServerConnectionRegistry;
+import tech.kwik.core.server.*;
 import tech.kwik.core.stream.FlowControl;
 import tech.kwik.core.stream.StreamManager;
 import tech.kwik.core.tls.QuicTransportParametersExtension;
@@ -61,7 +49,6 @@ import tech.kwik.core.util.InetTools;
 
 import java.io.IOException;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.security.SecureRandom;
@@ -73,9 +60,7 @@ import java.util.Random;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-import static tech.kwik.core.QuicConstants.TransportErrorCode.INVALID_TOKEN;
-import static tech.kwik.core.QuicConstants.TransportErrorCode.PROTOCOL_VIOLATION;
-import static tech.kwik.core.QuicConstants.TransportErrorCode.TRANSPORT_PARAMETER_ERROR;
+import static tech.kwik.core.QuicConstants.TransportErrorCode.*;
 import static tech.kwik.core.common.EncryptionLevel.Initial;
 import static tech.kwik.core.impl.QuicConnectionImpl.Status.Connected;
 import static tech.kwik.core.impl.QuicConnectionImpl.Status.Handshaking;
@@ -671,8 +656,8 @@ public class ServerConnectionImpl extends QuicConnectionImpl implements ServerCo
     }
 
     @Override
-    public InetAddress getInitialClientAddress() {
-        return initialClientAddress.getAddress();
+    public InetSocketAddress getInitialClientAddress() {
+        return initialClientAddress;
     }
 
     private class TlsMessageSender implements ServerMessageSender {

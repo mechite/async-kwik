@@ -18,17 +18,17 @@
  */
 package tech.kwik.core.stream;
 
-import tech.kwik.core.common.EncryptionLevel;
-import tech.kwik.core.impl.QuicClientConnectionImpl;
-import tech.kwik.core.impl.Role;
-import tech.kwik.core.impl.Version;
-import tech.kwik.core.frame.QuicFrame;
-import tech.kwik.core.frame.StreamFrame;
-import tech.kwik.core.log.Logger;
-import tech.kwik.core.log.NullLogger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
+import tech.kwik.core.common.EncryptionLevel;
+import tech.kwik.core.frame.QuicFrame;
+import tech.kwik.core.frame.StreamFrame;
+import tech.kwik.core.impl.QuicClientConnectionImpl;
+import tech.kwik.core.impl.Role;
+import tech.kwik.core.impl.Version;
+import tech.kwik.core.log.Logger;
+import tech.kwik.core.log.NullLogger;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

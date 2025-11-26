@@ -18,11 +18,11 @@
  */
 package tech.kwik.core.impl;
 
-import tech.kwik.core.common.EncryptionLevel;
 import org.junit.jupiter.api.Test;
+import tech.kwik.core.common.EncryptionLevel;
 
-import static tech.kwik.core.common.EncryptionLevel.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static tech.kwik.core.common.EncryptionLevel.*;
 
 class EncryptionLevelTest {
 

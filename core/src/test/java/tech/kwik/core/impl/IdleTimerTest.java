@@ -18,16 +18,16 @@
  */
 package tech.kwik.core.impl;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import tech.kwik.core.frame.PingFrame;
 import tech.kwik.core.log.Logger;
 import tech.kwik.core.packet.ShortHeaderPacket;
 import tech.kwik.core.test.FieldSetter;
 import tech.kwik.core.test.TestClock;
 import tech.kwik.core.test.TestScheduledExecutor;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.util.concurrent.ScheduledExecutorService;
 

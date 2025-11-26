@@ -47,7 +47,6 @@ public class QuicStreamImpl implements QuicStream {
     private volatile boolean inputClosed;
     private final ReentrantLock stateLock;
 
-
     public QuicStreamImpl(int streamId, Role role, QuicConnectionImpl connection, StreamManager streamManager, FlowControl flowController) {
         this(Version.getDefault(), streamId, role, connection, streamManager, flowController, new NullLogger());
     }
@@ -77,6 +76,7 @@ public class QuicStreamImpl implements QuicStream {
 
         if (isBidirectional() || isUnidirectional() && isSelfInitiated()) {
             outputStream = createStreamOutputStream(sendBufferSize, flowController);
+            ((StreamOutputStreamImpl) outputStream).sendBuffer.notifyCanWrite(true);
         }
         else {
             outputStream = new NullStreamOutputStream();
@@ -102,6 +102,13 @@ public class QuicStreamImpl implements QuicStream {
     @Override
     public OutputStream getOutputStream() {
         return outputStream;
+    }
+
+    public boolean isOutputClosed() {
+        return outputClosed;
+    }
+    public boolean isInputClosed() {
+        return inputClosed;
     }
 
     /**

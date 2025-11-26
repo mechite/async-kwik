@@ -21,8 +21,8 @@ package tech.kwik.core.server;
 import tech.kwik.core.QuicConnection;
 
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 
 public interface ServerConnection extends QuicConnection {
-
-    InetAddress getInitialClientAddress();
+    InetSocketAddress getInitialClientAddress();
 }

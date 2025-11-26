@@ -18,13 +18,13 @@
  */
 package tech.kwik.core.tls;
 
-import tech.kwik.core.test.ByteUtils;
+import org.junit.jupiter.api.Test;
 import tech.kwik.agent15.ProtectionKeysType;
 import tech.kwik.agent15.TlsConstants;
 import tech.kwik.agent15.engine.MessageProcessor;
 import tech.kwik.agent15.engine.TlsMessageParser;
 import tech.kwik.agent15.handshake.HandshakeMessage;
-import org.junit.jupiter.api.Test;
+import tech.kwik.core.test.ByteUtils;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
