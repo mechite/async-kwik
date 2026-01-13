@@ -41,7 +41,7 @@ class StreamOutputStreamImpl extends StreamOutputStream implements FlowControlUp
     private final QuicStreamImpl quicStream;
     private final Object lock = new Object();
 
-    public final SendBuffer sendBuffer;
+    private final SendBuffer sendBuffer;
     private final Logger log;
     private final int maxBufferSize;
     private final RetransmitBuffer retransmitBuffer;
@@ -264,7 +264,11 @@ class StreamOutputStreamImpl extends StreamOutputStream implements FlowControlUp
     protected EncryptionLevel getEncryptionLevel() {
         return App;
     }
-
+    
+    SendBuffer getSendBuffer() {
+        return sendBuffer;
+    }
+    
     // Very confusing name: this has nothing to do with resetting the stream as the reset method does!
     protected void resetOutputStream() {
         closed = false;

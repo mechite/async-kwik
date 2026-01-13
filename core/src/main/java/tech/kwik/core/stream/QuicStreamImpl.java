@@ -77,7 +77,7 @@ public class QuicStreamImpl implements QuicStream {
 
         if (isBidirectional() || isUnidirectional() && isSelfInitiated()) {
             outputStream = createStreamOutputStream(sendBufferSize, flowController);
-            ((StreamOutputStreamImpl) outputStream).sendBuffer.notifyCanWrite(true);
+            ((StreamOutputStreamImpl) outputStream).getSendBuffer().notifyCanWrite(true);
         }
         else {
             outputStream = new NullStreamOutputStream();
