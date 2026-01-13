@@ -24,5 +24,8 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 
 public interface ServerConnection extends QuicConnection {
-    InetSocketAddress getInitialClientAddress();
+
+    InetAddress getInitialClientAddress();
+
+    InetSocketAddress getInitialRemoteAddress();
 }
