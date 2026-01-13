@@ -1,5 +1,7 @@
 package tech.kwik.core.stream;
 
+import tech.kwik.core.concurrent.VirtualExecutor;
+
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 
@@ -8,15 +10,22 @@ import static java.util.concurrent.Executors.newSingleThreadExecutor;
 import static java.util.concurrent.TimeUnit.DAYS;
 
 final class ListenerThreadPool implements Executor, AutoCloseable {
-
+	
     private final ExecutorService executor;
+	private final boolean virtual;
 
     ListenerThreadPool() {
+		if (VirtualExecutor.supported()) {
+			this.executor = VirtualExecutor.createExecutor("kwik-listener");
+			this.virtual = true;
+			return;
+		}
         this.executor = newSingleThreadExecutor(runnable -> {
 			Thread thread = new Thread(runnable, "kwik-listener");
 			thread.setDaemon(true);
 			return thread;
 		});
+		this.virtual = false;
     }
 	
 	@Override
@@ -33,6 +42,8 @@ final class ListenerThreadPool implements Executor, AutoCloseable {
      */
     @Override
     public void close() {
+		if (this.virtual) return;
+		
         boolean terminated = this.executor.isTerminated();
 		if (terminated) return;
   
