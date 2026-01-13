@@ -305,7 +305,7 @@ class StreamOutputStreamImpl extends StreamOutputStream implements FlowControlUp
     }
 
     private QuicFrame createResetFrame(int maxFrameSize) {
-        assert (reset == true);
+        assert reset;
         return new ResetStreamFrame(quicStream.streamId, resetErrorCode, currentOffset);
     }
 
