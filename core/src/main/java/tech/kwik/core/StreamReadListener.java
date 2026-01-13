@@ -18,6 +18,15 @@
  */
 package tech.kwik.core;
 
+/**
+ * Listener that is notified when data is read from a {@link QuicStream}.
+ */
 public interface StreamReadListener {
+    
+    /**
+     * Called when bytes are read from a stream.
+     * @param stream the stream that data was read from
+     * @param amount the number of bytes read
+     */
     void read(QuicStream stream, long amount);
 }

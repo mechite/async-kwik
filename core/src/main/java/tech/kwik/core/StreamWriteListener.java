@@ -18,6 +18,16 @@
  */
 package tech.kwik.core;
 
+/**
+ * Listener that is notified when data is written to a {@link QuicStream}.
+ */
+@FunctionalInterface
 public interface StreamWriteListener {
+    
+    /**
+     * Called when bytes are written to a stream.
+     * @param stream the stream that data was written to
+     * @param amount the number of bytes written
+     */
     void write(QuicStream stream, long amount);
 }
