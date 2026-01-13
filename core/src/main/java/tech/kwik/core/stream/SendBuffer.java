@@ -18,6 +18,7 @@
  */
 package tech.kwik.core.stream;
 
+import tech.kwik.core.StreamWriteListener;
 import tech.kwik.core.frame.StreamFrame;
 import tech.kwik.core.impl.Version;
 
@@ -66,10 +67,10 @@ public class SendBuffer {
     }
 
     public void notifyCanWrite(boolean force) {
-        var l = (stream != null && stream.connection != null)
+		StreamWriteListener listener = (stream != null && stream.connection != null)
                 ? stream.connection.getStreamWriteListener() :
                 null;
-        if (l == null) return;
+        if (listener == null) return;
         else if (stream.isOutputClosed()) return;
 
         int avail = getAvailableBytes();
@@ -80,10 +81,9 @@ public class SendBuffer {
             lastReportedAvail = report;
             lastReportedWritable = canWrite;
             ListenerThreadPool.execute(stream, () -> {
-                if (!stream.isOutputClosed()) {
-                    l.write(stream, report);
-                }
-            });
+				if (stream.isOutputClosed()) return;
+				listener.write(stream, report);
+			});
         }
     }
 
