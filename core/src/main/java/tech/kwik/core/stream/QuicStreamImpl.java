@@ -205,8 +205,16 @@ public class QuicStreamImpl implements QuicStream {
     long terminateStream(long errorCode, long finalSize) throws TransportError {
         return inputStream.terminate(errorCode, finalSize);
     }
-
-    // TODO: QuicStream should have a close method that closes both input and output stream and releases all resources and marks itself as terminated.
+    
+    @Override
+    public void close() {
+        // TODO: QuicStream should have a close method that closes both input
+        //  and output stream and releases all resources and marks itself as
+        //  terminated.
+        
+        // currently only closing the listener thread pool
+        this.listenerPool.close();
+    }
 
     /**
      * Resets the output stream so data can again be send from the start of the stream (offset 0). Note that in such

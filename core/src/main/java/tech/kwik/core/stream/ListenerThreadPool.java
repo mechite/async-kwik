@@ -6,6 +6,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 
+import static java.lang.Thread.currentThread;
+import static java.util.concurrent.TimeUnit.DAYS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 final class ListenerThreadPool implements AutoCloseable {
@@ -35,8 +37,30 @@ final class ListenerThreadPool implements AutoCloseable {
         });
     }
     
+    /**
+     * Implementation of {@link AutoCloseable#close()} that performs an
+     * orderly shutdown of {@link #executor}.
+     *
+     * @implNote This is a clone of OpenJDK 19+ default close method
+     * available directly on the newer {@code ExecutorService} interface.
+     */
     @Override
     public void close() {
-        //todo
-    }
+        boolean terminated = this.executor.isTerminated();
+		if (terminated) return;
+  
+		this.executor.shutdown();
+		boolean interrupted = false;
+		while (!terminated) {
+			try {
+				terminated = this.executor.awaitTermination(1L, DAYS);
+			} catch (InterruptedException e) {
+				if (interrupted) continue;
+				this.executor.shutdownNow();
+				interrupted = true;
+			}
+		}
+		if (!interrupted) return;
+		currentThread().interrupt();
+	}
 }
