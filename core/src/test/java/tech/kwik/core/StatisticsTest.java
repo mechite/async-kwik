@@ -18,8 +18,8 @@
  */
 package tech.kwik.core;
 
-import org.junit.jupiter.api.Test;
 import tech.kwik.core.send.SendStatistics;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

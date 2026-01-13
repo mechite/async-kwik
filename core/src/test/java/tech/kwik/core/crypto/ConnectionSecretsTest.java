@@ -18,12 +18,12 @@
  */
 package tech.kwik.core.crypto;
 
-import org.junit.jupiter.api.Test;
 import tech.kwik.core.common.EncryptionLevel;
 import tech.kwik.core.impl.Role;
 import tech.kwik.core.impl.Version;
 import tech.kwik.core.impl.VersionHolder;
 import tech.kwik.core.log.Logger;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.ThrowableAssert.catchThrowable;

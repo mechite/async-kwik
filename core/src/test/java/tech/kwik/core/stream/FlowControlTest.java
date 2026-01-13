@@ -18,15 +18,15 @@
  */
 package tech.kwik.core.stream;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import tech.kwik.core.QuicStream;
-import tech.kwik.core.frame.MaxDataFrame;
-import tech.kwik.core.frame.MaxStreamDataFrame;
 import tech.kwik.core.impl.QuicConnectionImpl;
 import tech.kwik.core.impl.Role;
 import tech.kwik.core.impl.TransportError;
 import tech.kwik.core.impl.TransportParameters;
+import tech.kwik.core.frame.MaxDataFrame;
+import tech.kwik.core.frame.MaxStreamDataFrame;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;

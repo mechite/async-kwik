@@ -18,10 +18,14 @@
  */
 package tech.kwik.core.send;
 
+import tech.kwik.core.frame.CryptoFrame;
+import tech.kwik.core.frame.DatagramFrame;
+import tech.kwik.core.frame.PathResponseFrame;
+import tech.kwik.core.frame.QuicFrame;
+import tech.kwik.core.frame.StreamFrame;
+import tech.kwik.core.impl.Version;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tech.kwik.core.frame.*;
-import tech.kwik.core.impl.Version;
 
 import java.time.Duration;
 import java.time.Instant;

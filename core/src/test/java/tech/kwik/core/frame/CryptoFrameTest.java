@@ -19,8 +19,8 @@
 package tech.kwik.core.frame;
 
 
-import org.junit.jupiter.api.Test;
 import tech.kwik.core.impl.Version;
+import org.junit.jupiter.api.Test;
 
 import java.nio.ByteBuffer;
 

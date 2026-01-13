@@ -22,11 +22,11 @@ import tech.kwik.core.QuicClientConnection;
 import tech.kwik.core.QuicConnection;
 import tech.kwik.core.QuicSessionTicket;
 import tech.kwik.core.QuicStream;
+import tech.kwik.h09.client.Http09Client;
 import tech.kwik.core.impl.QuicClientConnectionImpl;
 import tech.kwik.core.log.FileLogger;
 import tech.kwik.core.log.Logger;
 import tech.kwik.core.log.NullLogger;
-import tech.kwik.h09.client.Http09Client;
 
 import java.io.File;
 import java.io.FileOutputStream;

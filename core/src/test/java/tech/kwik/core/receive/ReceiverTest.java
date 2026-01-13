@@ -18,10 +18,10 @@
  */
 package tech.kwik.core.receive;
 
+import tech.kwik.core.log.Logger;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tech.kwik.core.log.Logger;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;

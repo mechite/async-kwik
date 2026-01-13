@@ -18,10 +18,10 @@
  */
 package tech.kwik.core.impl;
 
-import org.junit.jupiter.api.Test;
 import tech.kwik.agent15.NewSessionTicket;
 import tech.kwik.agent15.TlsConstants;
 import tech.kwik.agent15.handshake.NewSessionTicketMessage;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;

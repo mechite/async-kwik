@@ -25,7 +25,11 @@ import tech.kwik.core.crypto.MissingKeysException;
 import tech.kwik.core.generic.IntegerTooLargeException;
 import tech.kwik.core.generic.InvalidIntegerEncodingException;
 import tech.kwik.core.generic.VariableLengthInteger;
-import tech.kwik.core.impl.*;
+import tech.kwik.core.impl.InvalidPacketException;
+import tech.kwik.core.impl.QuicConnectionImpl;
+import tech.kwik.core.impl.Role;
+import tech.kwik.core.impl.TransportError;
+import tech.kwik.core.impl.VersionHolder;
 import tech.kwik.core.log.Logger;
 
 import java.nio.ByteBuffer;

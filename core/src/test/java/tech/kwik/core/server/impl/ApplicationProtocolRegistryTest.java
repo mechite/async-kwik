@@ -18,9 +18,9 @@
  */
 package tech.kwik.core.server.impl;
 
-import org.junit.jupiter.api.Test;
 import tech.kwik.core.impl.QuicConnectionImpl;
 import tech.kwik.core.server.ApplicationProtocolConnection;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Optional;

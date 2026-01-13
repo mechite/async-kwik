@@ -18,8 +18,8 @@
  */
 package tech.kwik.core.impl;
 
-import org.mockito.ArgumentMatcher;
 import tech.kwik.core.packet.QuicPacket;
+import org.mockito.ArgumentMatcher;
 
 public class PacketMatcherByPacketNumber implements ArgumentMatcher<QuicPacket> {
 

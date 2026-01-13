@@ -18,9 +18,9 @@
  */
 package tech.kwik.core;
 
+import tech.kwik.core.impl.TransportParameters;
 import tech.kwik.agent15.NewSessionTicket;
 import tech.kwik.agent15.TlsConstants;
-import tech.kwik.core.impl.TransportParameters;
 
 public interface QuicSessionTicket {
 

@@ -18,11 +18,11 @@
  */
 package tech.kwik.core.packet;
 
-import org.junit.jupiter.api.Test;
-import tech.kwik.core.frame.QuicFrame;
-import tech.kwik.core.frame.StreamFrame;
 import tech.kwik.core.impl.TestUtils;
 import tech.kwik.core.impl.Version;
+import tech.kwik.core.frame.QuicFrame;
+import tech.kwik.core.frame.StreamFrame;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

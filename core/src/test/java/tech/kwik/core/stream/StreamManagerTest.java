@@ -18,13 +18,14 @@
  */
 package tech.kwik.core.stream;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 import tech.kwik.core.ConnectionConfig;
 import tech.kwik.core.QuicStream;
 import tech.kwik.core.common.EncryptionLevel;
-import tech.kwik.core.frame.*;
+import tech.kwik.core.frame.MaxDataFrame;
+import tech.kwik.core.frame.MaxStreamsFrame;
+import tech.kwik.core.frame.QuicFrame;
+import tech.kwik.core.frame.ResetStreamFrame;
+import tech.kwik.core.frame.StreamFrame;
 import tech.kwik.core.impl.QuicConnectionImpl;
 import tech.kwik.core.impl.Role;
 import tech.kwik.core.impl.TransportError;
@@ -33,6 +34,9 @@ import tech.kwik.core.server.ServerConnectionConfig;
 import tech.kwik.core.test.FieldReader;
 import tech.kwik.core.test.TestClock;
 import tech.kwik.core.test.TestScheduledExecutor;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,11 +48,15 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-import static org.assertj.core.api.Assertions.*;
+import static tech.kwik.core.QuicConstants.TransportErrorCode.FINAL_SIZE_ERROR;
+import static tech.kwik.core.QuicConstants.TransportErrorCode.FLOW_CONTROL_ERROR;
+import static tech.kwik.core.QuicConstants.TransportErrorCode.STREAM_LIMIT_ERROR;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
-import static tech.kwik.core.QuicConstants.TransportErrorCode.*;
 
 class StreamManagerTest {
 

@@ -18,8 +18,8 @@
  */
 package tech.kwik.core.frame;
 
-import org.junit.jupiter.api.Test;
 import tech.kwik.core.log.Logger;
+import org.junit.jupiter.api.Test;
 
 import java.nio.ByteBuffer;
 

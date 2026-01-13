@@ -18,10 +18,10 @@
  */
 package tech.kwik.core.send;
 
-import org.junit.jupiter.api.BeforeEach;
 import tech.kwik.core.common.EncryptionLevel;
-import tech.kwik.core.crypto.Aead;
 import tech.kwik.core.impl.TestUtils;
+import tech.kwik.core.crypto.Aead;
+import org.junit.jupiter.api.BeforeEach;
 
 public class AbstractSenderTest {
 
